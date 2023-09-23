@@ -3011,6 +3011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990a64f22ae99864083dc4bf878643f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdelay: 0.5
 --- !u!102 &571956250
 TextMesh:
   serializedVersion: 3

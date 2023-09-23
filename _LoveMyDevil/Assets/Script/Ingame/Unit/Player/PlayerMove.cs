@@ -49,8 +49,6 @@ public class PlayerMove : MonoBehaviour
         {
             Blink().Forget();
         }
-        //_playerRigidbody.MovePosition(transform.position+(new Vector3(speed * _playerControll.Userinput.AxisState, 0) * Time.deltaTime));
-       
     }
 
     private void FixedUpdate()
@@ -115,15 +113,20 @@ public class PlayerMove : MonoBehaviour
     }
     
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if ((other.gameObject.CompareTag("Ground")||
-            other.gameObject.CompareTag("ColoredPlatform")||
-            other.gameObject.CompareTag("DropPlatform")||
-            other.gameObject.CompareTag("Platform")) && other.contacts[1].normal.y > 0.7f)
+        if ((other.gameObject.CompareTag("Ground") ||
+             other.gameObject.CompareTag("ColoredPlatform") ||
+             other.gameObject.CompareTag("DropPlatform") ||
+             other.gameObject.CompareTag("Platform")) && other.contacts[1].normal.y > 0.7f &&
+            _playerRigidbody.velocity.y >= 0)
         {
             _isjumping = false;
             jumpCount = 0;
+        }
+        if (other.transform.CompareTag("DropPlatform") && other.transform.position.y < transform.position.y)
+        {
+            other.transform.GetComponent<DroppedPlatform>().Dropped().Forget();
         }
         if(other.gameObject.CompareTag("Wall"))
         {
@@ -140,10 +143,7 @@ public class PlayerMove : MonoBehaviour
             _isjumping = true;
             jumpCount = 1;
         }
-        if (other.transform.CompareTag("DropPlatform") && other.transform.position.y < transform.position.y)
-        {
-            other.transform.GetComponent<DroppedPlatform>().Dropped().Forget();
-        }
+ 
     }
 
 
