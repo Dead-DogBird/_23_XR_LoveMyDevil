@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public class Spray : MonoBehaviour
+public class Spray : PoolableObj
 {
     private CircleCollider2D my_collider;
     
@@ -16,39 +16,56 @@ public class Spray : MonoBehaviour
     private int id;
     void Start()
     {
+    }
+
+    void OnEnable()
+    {
+        base.OnEnable();
         my_collider = GetComponent<CircleCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
-        AutoDestroy().Forget();
-        id = Random.Range(0, 100);
-        _tween = _sprite.DOColor(new Color(_sprite.color.r,_sprite.color.g,_sprite.color.b,0), 0.2f);
-    
+       
     }
     void Update()
     {
     }
 
-    public void CancleDestroyCallback(Transform _transform)
+    public virtual GameObject Init(Vector3 pos,Color _sprayColor)
+    {
+        transform.position = pos;
+        _sprite.color = _sprayColor;
+        isColiderCheck = false;
+        _tween = _sprite.DOColor(new Color(_sprite.color.r,_sprite.color.g,_sprite.color.b,0), 0.2f);
+        return gameObject;
+    }
+    public void CancelDestroyCallback(Transform _transform)
     {
         transform.parent = _transform;
         isColiderCheck = true;
+        Debug.Log("Called cancelCallback!");
         Destroy(GetComponent<CircleCollider2D>());
+    }
+
+    private void OnDisable()
+    {
+        _tween.Complete();
     }
     private void OnDestroy()
     {
-        isColiderCheck = true;
-        _tween.Complete();
+ 
     }
-    async UniTaskVoid AutoDestroy()
+    protected override async UniTaskVoid ReleseReserv(float delay = 1.5f)
     {
-        for (int i = 0; i < 15; i++)
+        var timer = delay;
+        while(timer>=0f)
         {
+            timer -= 0.1f;
             if (isColiderCheck)
             {
                 return;
             }
             await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
         }
-        Destroy(gameObject);
+        GameManager.Instance._poolingManager.Despawn(this);
     }
     
 }

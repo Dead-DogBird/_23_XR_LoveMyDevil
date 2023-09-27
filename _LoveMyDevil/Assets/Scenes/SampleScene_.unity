@@ -4005,6 +4005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spray: {fileID: 170936472706230110, guid: 2fcfafad10d85664db4b9d3fc60112c3, type: 3}
   mousePointer: {fileID: 1764610741}
+  _sprayColor: {r: 1, g: 0, b: 0.35174704, a: 0.57254905}
 --- !u!1 &873773888
 GameObject:
   m_ObjectHideFlags: 0
@@ -4299,7 +4300,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.7940041
+  m_FillAmount: 0.90700877
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -6158,7 +6159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Spray : 79.4%'
+  m_Text: 'Spray : 90.7%'
 --- !u!222 &1449048260
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7066,6 +7067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1673284018}
   - component: {fileID: 1673284017}
+  - component: {fileID: 1673284019}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7101,6 +7103,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673284019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673284016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a199268feadf6d428c01d93278ecb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1685845830
 GameObject:
   m_ObjectHideFlags: 0
@@ -9296,9 +9310,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1470328805}
     m_Modifications:
+    - target: {fileID: 687889502931844557, guid: bd3546b8b45fd304eb686a323366df3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 687889503717350095, guid: bd3546b8b45fd304eb686a323366df3d, type: 3}
       propertyPath: m_Name
       value: ColoredObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 687889503717350095, guid: bd3546b8b45fd304eb686a323366df3d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 687889503717350099, guid: bd3546b8b45fd304eb686a323366df3d, type: 3}
       propertyPath: m_RootOrder

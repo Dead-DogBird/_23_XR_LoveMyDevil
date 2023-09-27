@@ -38,7 +38,7 @@ public class TestColorObject : MonoBehaviour
     {
         if (spray.CompareTag("Spray") && !isActive)
         {
-            spray.transform.GetComponent<Spray>().CancleDestroyCallback(colorCallBackController.transform);
+            spray.transform.GetComponent<Spray>().CancelDestroyCallback(colorCallBackController.transform);
         }
     }
     

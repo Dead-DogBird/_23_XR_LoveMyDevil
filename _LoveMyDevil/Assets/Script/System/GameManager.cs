@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoSingleton<GameManager>
 {
     public float progress;
+    internal PoolingManager _poolingManager;
 
     private float allPoints;
     private float nowPoints;

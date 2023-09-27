@@ -8,6 +8,7 @@ public class PlayerAct : MonoBehaviour
 {
     [SerializeField] private GameObject spray;
     [SerializeField] private Transform mousePointer;
+    [SerializeField] private Color _sprayColor;
     PlayerContrl _playerContrl;
     private float _sprayGauge = 100;
     private float sprayGauge
@@ -24,6 +25,7 @@ public class PlayerAct : MonoBehaviour
     void Start()
     {
         _playerContrl = GetComponent<PlayerContrl>();
+        GameManager.Instance._poolingManager.AddPoolingList<Spray>(100,spray);
     }
 
     void Update()
@@ -41,7 +43,7 @@ public class PlayerAct : MonoBehaviour
         {
             isWaitForfillGauge = false;
             sprayGauge -= 0.2f;
-            Instantiate(spray, mousePointer.position, Quaternion.identity);
+            GameManager.Instance._poolingManager.Spawn<Spray>().Init(mousePointer.position,_sprayColor);
         }
     }
     async UniTaskVoid FillGaugeTask()
