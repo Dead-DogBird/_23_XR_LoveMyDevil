@@ -38,9 +38,8 @@ public class Spray : PoolableObj
         _tween = _sprite.DOColor(new Color(_sprite.color.r,_sprite.color.g,_sprite.color.b,0), 0.2f);
         return gameObject;
     }
-    public void CancelDestroyCallback(Transform _transform)
+    public void CancelDestroyCallback()
     {
-        transform.parent = _transform;
         isColiderCheck = true;
         Debug.Log("Called cancelCallback!");
         GetComponent<CircleCollider2D>().enabled = false;
