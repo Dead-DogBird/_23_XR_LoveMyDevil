@@ -21,6 +21,7 @@ public class Spray : PoolableObj
     void OnEnable()
     {
         base.OnEnable();
+        GetComponent<CircleCollider2D>().enabled = true;
         my_collider = GetComponent<CircleCollider2D>();
         _sprite = GetComponent<SpriteRenderer>();
        
@@ -42,7 +43,7 @@ public class Spray : PoolableObj
         transform.parent = _transform;
         isColiderCheck = true;
         Debug.Log("Called cancelCallback!");
-        Destroy(GetComponent<CircleCollider2D>());
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     private void OnDisable()
