@@ -118,8 +118,7 @@ public class PlayerMove : MonoBehaviour
         if ((other.gameObject.CompareTag("Ground") ||
              other.gameObject.CompareTag("ColoredPlatform") ||
              other.gameObject.CompareTag("DropPlatform") ||
-             other.gameObject.CompareTag("Platform")) && other.contacts[1].normal.y > 0.7f &&
-            _playerRigidbody.velocity.y >= 0)
+             other.gameObject.CompareTag("Platform")) && other.contacts[1].normal.y > 0.7f)
         {
             _isjumping = false;
             jumpCount = 0;
@@ -138,7 +137,7 @@ public class PlayerMove : MonoBehaviour
     {
         if ((other.gameObject.CompareTag("Ground")||
             other.gameObject.CompareTag("ColoredPlatform") ||
-            other.gameObject.CompareTag("DropPlatform")) && !_isjumping)
+            other.gameObject.CompareTag("DropPlatform")))
         {
             _isjumping = true;
             jumpCount = 1;

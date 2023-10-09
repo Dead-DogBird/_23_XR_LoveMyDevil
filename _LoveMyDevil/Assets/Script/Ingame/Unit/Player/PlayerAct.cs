@@ -8,6 +8,7 @@ public class PlayerAct : MonoBehaviour
 {
     [SerializeField] private GameObject spray;
     [SerializeField] private Transform mousePointer;
+    [Header("스프레이 색깔")]
     [SerializeField] private Color _sprayColor;
     PlayerContrl _playerContrl;
     private float _sprayGauge = 100;
