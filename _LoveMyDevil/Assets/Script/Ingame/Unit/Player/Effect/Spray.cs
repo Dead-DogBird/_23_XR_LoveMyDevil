@@ -41,7 +41,6 @@ public class Spray : PoolableObj
     public void CancelDestroyCallback()
     {
         isColiderCheck = true;
-        Debug.Log("Called cancelCallback!");
         GetComponent<CircleCollider2D>().enabled = false;
     }
 
