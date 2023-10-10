@@ -23,8 +23,9 @@ public class ColoredPlatform : MonoBehaviour
         
     [Header("사라질 때 까지 걸리는 시간(초 단위)")]
     [SerializeField]private float disappearDelay = 2.5f;
-    
 
+    private bool isDie = false;
+    
     private bool isDone = false;
     private void Start()
     {
@@ -102,6 +103,7 @@ public class ColoredPlatform : MonoBehaviour
         isDisapper = true;
         while (true)
         {
+            if (isDie) return;
             if(!isDelay)
             {if (!PaintedPlatform(false,disappearFigure))break;}
             await UniTask.Delay(TimeSpan.FromSeconds(0.02f));
@@ -115,9 +117,11 @@ public class ColoredPlatform : MonoBehaviour
         float timer = disappearDelay;
         while(timer>0)
         {
+            if (isDie) return;
             timer -= 0.1f;
             await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
         }
         isDelay = false;
     }
+    
 }

@@ -48,9 +48,11 @@ public class Spray : PoolableObj
     {
         _tween.Complete();
     }
+
+    private bool isDie = false;
     private void OnDestroy()
     {
- 
+        isDie = true;
     }
     protected override async UniTaskVoid ReleseReserv(float delay = 1.5f)
     {
@@ -58,7 +60,7 @@ public class Spray : PoolableObj
         while(timer>=0f)
         {
             timer -= 0.1f;
-            if (isColiderCheck)
+            if (isColiderCheck||isDie)
             {
                 return;
             }

@@ -2289,6 +2289,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: ff0c713327ba7fe46a99915d4a60ec0f, type: 2}
   - {fileID: 7400000, guid: 7338ae062bfeaac458f51c7237313db9, type: 2}
   - {fileID: 7400000, guid: 61891e48ecca60948945a9afb7cd49bc, type: 2}
+  jumpDelay: 1.2
 --- !u!50 &511530596
 Rigidbody2D:
   serializedVersion: 4
@@ -3198,7 +3199,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropPlatform (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6811424999829861909, guid: 476cf22b797b4a84ca72a43abb71369e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 476cf22b797b4a84ca72a43abb71369e, type: 3}
 --- !u!1001 &877775066
 PrefabInstance:
@@ -3207,6 +3209,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1852559482707701857, guid: 70274e5ab9421c2439a551e21efdda3c, type: 3}
+      propertyPath: colordPart
+      value: 
+      objectReference: {fileID: 2033443097}
+    - target: {fileID: 1852559482707701857, guid: 70274e5ab9421c2439a551e21efdda3c, type: 3}
+      propertyPath: colorCallBackController
+      value: 
+      objectReference: {fileID: 1956876499}
     - target: {fileID: 1852559483009205129, guid: 70274e5ab9421c2439a551e21efdda3c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4868,7 +4878,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropPlatform (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6811424999829861909, guid: 476cf22b797b4a84ca72a43abb71369e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 476cf22b797b4a84ca72a43abb71369e, type: 3}
 --- !u!1 &1380582592
 GameObject:
@@ -6908,6 +6919,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f94a67c85501a47b431643bc4b4d55, type: 3}
+--- !u!114 &1956876499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9044360974483979365, guid: 70274e5ab9421c2439a551e21efdda3c, type: 3}
+  m_PrefabInstance: {fileID: 877775066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80e1924ffdc1f54391ccfd61cc4c388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2016800542
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,6 +7041,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2033443097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852559481900553522, guid: 70274e5ab9421c2439a551e21efdda3c, type: 3}
+  m_PrefabInstance: {fileID: 877775066}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2134381174
 GameObject:
   m_ObjectHideFlags: 0

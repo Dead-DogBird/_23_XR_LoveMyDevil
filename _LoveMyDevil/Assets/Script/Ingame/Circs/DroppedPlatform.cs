@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DroppedPlatform : MonoBehaviour
@@ -60,7 +61,12 @@ public class DroppedPlatform : MonoBehaviour
             await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
         }
         _tween =  _sprite.DOColor(new Color(40/255f,36/255f,90/255f), 0.1f);
-        await UniTask.Delay(TimeSpan.FromSeconds(1.2f));
+
+        for (int i = 0; i < 12; i++)
+        {
+            if (!isActive) return;
+            await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+        }
         isDrop = true;
         while(respawnDelay>0f)
         {
