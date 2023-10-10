@@ -69,8 +69,7 @@ public class GateKeeper : MonoBehaviour
     }
     void ColliderCheckCallback()
     {
-        Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position,Vector2.one,0);
-       
+        Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, Vector2.one, 0);
         foreach(Collider2D i in hit) 
         {
             if (i.CompareTag("Platform"))
