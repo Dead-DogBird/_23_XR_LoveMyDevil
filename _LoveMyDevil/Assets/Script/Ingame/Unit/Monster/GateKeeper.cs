@@ -25,22 +25,29 @@ public class GateKeeper : MonoBehaviour
     //¶Ù´Â Èû
     [Header("¶Ù´Â Èû(±âº»°ª : 3000)")]
     [SerializeField] float JumpForce = 3000;
+    
+    
+    public AnimationClip[] animationClips; // ¾Ö´Ï¸ÞÀÌ¼Ç Å¬¸³ ¹è¿­
+    private Animator animator;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         Invoke("Jump",2);
+        animator = GetComponent<Animator>();
     }
 
     
     void Update()
     {
-        ColliderCheckCallback();
+       ColliderCheckCallback();
     }
 
     void Jump()
     {
         _rigidbody.gravityScale = _gravity;
-        _rigidbody.AddForce(D9Extension.DegreeToVector2(Degree + (focus==-1?90:0))*JumpForce);    
+        PlayAnimation((focus==1?2:0));
+        _rigidbody.AddForce(D9Extension.DegreeToVector2(Degree + (focus==-1?90:0))*JumpForce);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -53,6 +60,7 @@ public class GateKeeper : MonoBehaviour
 
     async UniTaskVoid ClimbWall()
     {
+        PlayAnimation((focus==1?3:1));
         focus *= -1;
         _rigidbody.gravityScale = 0;
         _rigidbody.velocity = new Vector2(0, 0);
@@ -62,13 +70,25 @@ public class GateKeeper : MonoBehaviour
     void ColliderCheckCallback()
     {
         Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position,Vector2.one,0);
-        foreach(Collider2D i in hit)
+       
+        foreach(Collider2D i in hit) 
         {
             if (i.CompareTag("Platform"))
             {
                 Destroy(i.gameObject);
-            }
-        }   
-        
+            }                   
+        }
+    }
+    //0. LeftJump, 1. LeftLanding, 2. RightJump, 3. RightLanding
+    void PlayAnimation(int index)
+    {
+        if (index >= 0 && index < animationClips.Length)
+        {
+            animator.Play(animationClips[index].name);
+        }
+        else
+        {
+            Debug.LogWarning("Invalid animation index.");
+        }
     }
 }

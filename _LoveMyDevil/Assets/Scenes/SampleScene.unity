@@ -491,6 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb65160987ae1994291d98ef55f2e808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leverRange: 0
+  player: {fileID: 0}
 --- !u!1001 &41600634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2947,6 +2949,7 @@ GameObject:
   - component: {fileID: 548892053}
   - component: {fileID: 548892056}
   - component: {fileID: 548892052}
+  - component: {fileID: 548892057}
   m_Layer: 3
   m_Name: GateKepper
   m_TagString: Untagged
@@ -3083,6 +3086,31 @@ MonoBehaviour:
   _gravity: 5
   Degree: 45
   JumpForce: 3000
+  animationClips:
+  - {fileID: 7400000, guid: 1c46c470e47287f42bedba43f744bbfc, type: 2}
+  - {fileID: 7400000, guid: ff0c713327ba7fe46a99915d4a60ec0f, type: 2}
+  - {fileID: 7400000, guid: 7338ae062bfeaac458f51c7237313db9, type: 2}
+  - {fileID: 7400000, guid: 61891e48ecca60948945a9afb7cd49bc, type: 2}
+--- !u!95 &548892057
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548892051}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c5b18d2f4ac0bd4e9ec174e369aa46c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &570604903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3191,6 +3219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990a64f22ae99864083dc4bf878643f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdelay: 0.5
+  respawnDelay: 3
 --- !u!102 &571956250
 TextMesh:
   serializedVersion: 3
@@ -4243,7 +4273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867547036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36, y: 57.99, z: 0}
+  m_LocalPosition: {x: -17, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4295,6 +4325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spray: {fileID: 170936472706230110, guid: 2fcfafad10d85664db4b9d3fc60112c3, type: 3}
   mousePointer: {fileID: 1764610741}
+  _sprayColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &873773888
 GameObject:
   m_ObjectHideFlags: 0
