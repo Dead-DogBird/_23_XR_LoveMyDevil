@@ -28,6 +28,7 @@ public class GateKeeper : MonoBehaviour
     [Header("뛰는 힘(기본값 : 3000)")] [SerializeField]
     float JumpForce = 3000;
 
+    
 
     public AnimationClip[] animationClips; // 애니메이션 클립 배열
     private Animator animator;
@@ -50,8 +51,7 @@ public class GateKeeper : MonoBehaviour
     {
         _rigidbody.gravityScale = _gravity;
         PlayAnimation((focus == 1 ? 2 : 0));
-        _rigidbody.AddForce(D9Extension.DegreeToVector2(Degree + (focus == -1 ? 90 : 0)) * JumpForce);
-
+        _rigidbody.AddForce(D9Extension.DegreeToVector2((focus == -1 ? 180-Degree : Degree)) * JumpForce);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -61,7 +61,7 @@ public class GateKeeper : MonoBehaviour
             ClimbWall().Forget();
         }
     }
-
+    [Header("점프 딜레이(기본값 : 1.2)(초 단위)")]
     [SerializeField] private float jumpDelay = 1.2f;
     private float oridelay;
     private bool isDie = false;
